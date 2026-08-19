@@ -1,22 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TestProject.DAL.Context;
+﻿using TestProject.DAL.Context;
 using UserManagment.AggregateRoot.Entities;
 
 namespace UserManagment.Repository.Repositories
 {
-    public class UserRegisterRepository
+    public class UserUpdateRepository
     {
-        private readonly PortalDbContext _context;
-        public UserRegisterRepository(PortalDbContext context)
+        private readonly PortalDbContext _context; 
+        public UserUpdateRepository(PortalDbContext context)
         {
             _context = context;
         }
 
-        public Task RegisterUserSync(User user)
+        public Task UpdateUserSync(User user)
         {
-            _context.Users.Add(user);
+            _context.Users.Update(user);
             return Task.CompletedTask;
         }
 

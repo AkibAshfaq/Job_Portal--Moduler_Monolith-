@@ -6,5 +6,6 @@ namespace UserManagment.Handler.Handlers
 {
     public class UserDeletationHandler
     {
+
     }
 }

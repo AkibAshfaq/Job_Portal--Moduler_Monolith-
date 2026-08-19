@@ -14,7 +14,8 @@ namespace UserManagment.AggregateRoot.Entities
         public UserType UserType { get; set; }
         public ICollection<Company>? Company { get; set; }
         public bool IsActive { get; set; }
-        public bool IsDeleted { get; set; }
+        //public bool IsDeleted { get; set; }
+        //public bool IsDeleted { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
     }
