@@ -10,7 +10,6 @@ namespace UserManagment.DTO.UserRequestDTO
         public string? Email { get; set; }
         public string? PhoneNumber { get; set; }
         public string? UserType { get; set; }
-        public ICollection<CompanyRequest>? Company { get; set; }
 
     }
 }

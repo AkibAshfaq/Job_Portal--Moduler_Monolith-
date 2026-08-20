@@ -1,5 +1,5 @@
-﻿using TestProject.DAL.Context;
-using UserManagment.AggregateRoot.Entities;
+﻿using UserManagment.AggregateRoot.Entities;
+using UserManagment.Repository.Context;
 
 namespace UserManagment.Repository.Repositories
 {

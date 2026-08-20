@@ -1,10 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using TestProject.DAL.Context;
+using UserManagment.Repository.Context;
+using UserManagment.Repository.Repositories;
 
 
-namespace TestProject.DAL.Extensions
+
+namespace UserManagment.Repository.Extensions
 {
     public static class ServiceCollectionExtensions
     {
@@ -12,6 +14,10 @@ namespace TestProject.DAL.Extensions
         {
             services.AddDbContext<PortalDbContext>(Options => 
             Options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+            services.AddScoped<UserUpdateRepository>();
+            services.AddScoped<GetUserByMailRepository>();
+            services.AddScoped<UserRegisterRepository>();
+            services.AddScoped<GetUsersRepository>();
             return services;
         }
     }

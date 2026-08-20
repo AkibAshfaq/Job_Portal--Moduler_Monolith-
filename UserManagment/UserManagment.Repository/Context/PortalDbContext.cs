@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using UserManagment.AggregateRoot.Entities;
 
-namespace TestProject.DAL.Context
+namespace UserManagment.Repository.Context
 {
     public class PortalDbContext:DbContext
     {
