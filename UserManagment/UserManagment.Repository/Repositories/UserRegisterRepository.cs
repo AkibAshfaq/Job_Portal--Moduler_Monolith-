@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TestProject.DAL.Context;
-using UserManagment.AggregateRoot.Entities;
+﻿using UserManagment.AggregateRoot.Entities;
+using UserManagment.Repository.Context;
+
 
 namespace UserManagment.Repository.Repositories
 {
@@ -13,17 +11,31 @@ namespace UserManagment.Repository.Repositories
         {
             _context = context;
         }
-
-        public Task RegisterUserSync(User user)
+        
+        public bool RegisterUserSync(User user)
         {
-            _context.Users.Add(user);
-            return Task.CompletedTask;
+            try
+            {
+                _context.Users.Add(user);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
         }
 
-        public Task SaveChangeAsync()
+        public bool SaveChangeAsync()
         {
-            _context.SaveChangesAsync();
-            return Task.CompletedTask;
+            try
+            {
+                _context.SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

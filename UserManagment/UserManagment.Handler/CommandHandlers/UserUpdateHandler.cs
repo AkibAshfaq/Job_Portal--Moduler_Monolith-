@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using UserManagment.DTO.UserRequestDTO;
 
-namespace UserManagment.Handler.Handlers
+namespace UserManagment.Handler.CommandHandlers
 {
     public class UserUpdateHandler
     {

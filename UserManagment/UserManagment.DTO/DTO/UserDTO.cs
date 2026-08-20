@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using UserManagment.DTO.Enums;
 
-namespace UserManagment.AggregateRoot.Entities
+namespace UserManagment.DTO.DTO
 {
-    public class User
+    public class UserDTO
     {
         public int Id { get; set; }
         public string FullName { get; set; }
@@ -21,5 +21,4 @@ namespace UserManagment.AggregateRoot.Entities
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
     }
-
 }

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace UserManagment.Handler.Handlers
+namespace UserManagment.Handler.Validations
 {
-    public class UserRegistrationHandler
+    internal class RegistrationValidator
     {
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using UserManagment.DTO.Enums;
 
 namespace UserManagment.DTO.UserRequestDTO
 {
@@ -10,7 +11,6 @@ namespace UserManagment.DTO.UserRequestDTO
         public string? Email { get; set; }
         public string? Password { get; set; }
         public string? PhoneNumber { get; set; }
-        public string? UserType { get; set; }
-        public CompanyRequest? Company { get; set; }
+        public UserType? UserType { get; set; }
     }
 }
