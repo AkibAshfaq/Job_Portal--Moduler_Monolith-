@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using UserManagment.DTO.UserRequestDTO;
 
 namespace UserManagment.API.Controllers
 {
@@ -7,5 +7,10 @@ namespace UserManagment.API.Controllers
     [ApiController]
     public class UserUpdateController : ControllerBase
     {
+        [HttpPost]
+        public async Task<IActionResult> UpdateUser([FromBody] UserUpdateRequest request)
+        {
+            return Ok(new { Message = "User updated successfully" });
+        }
     }
 }
