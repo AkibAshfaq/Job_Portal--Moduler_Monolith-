@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using UserManagment.DTO.Command.Abstractions;
 
-namespace UserManagment.DTO.UserRequestDTO
+namespace UserManagment.DTO.Command
 {
-    public class UserUpdateRequest
+    public class UserUpdateCommand: ICommand
     {
         public string? FullName { get; set; }
         public string? Email { get; set; }

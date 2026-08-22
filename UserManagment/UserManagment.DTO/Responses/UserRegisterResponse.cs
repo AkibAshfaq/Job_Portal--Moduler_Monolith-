@@ -1,8 +1,9 @@
 ﻿using UserManagment.DTO.Enums;
+using UserManagment.DTO.Responses.Abstractions;
 
-namespace UserManagment.DTO.UserRequestDTO
+namespace UserManagment.DTO.Responses
 {
-    public class UserRegisterResponse
+    public class UserRegisterResponse: IResponse
     {
         public string FullName { get; set; }
         public string Email { get; set; }

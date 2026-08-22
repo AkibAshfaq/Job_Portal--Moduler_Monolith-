@@ -1,10 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Microsoft.Extensions.DependencyInjection;
 using UserManagment.AggregateRoot.Aggregates;
 using UserManagment.AggregateRoot.PasswordHasher;
+using UserManagment.AggregateRoot.PasswordHasher.Interfaces;
 
 namespace UserManagment.AggregateRoot.Extentions
 {
@@ -14,7 +11,7 @@ namespace UserManagment.AggregateRoot.Extentions
         {
             services.AddScoped<UserRegisterAggregate>();
             services.AddScoped<UserUpdateAggregate>();
-            services.AddScoped<PasswordHash>();
+            services.AddScoped<IPasswordHasher,PasswordHash>();
             return services;
         }
     }

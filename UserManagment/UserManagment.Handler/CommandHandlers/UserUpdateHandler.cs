@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using UserManagment.DTO.UserRequestDTO;
+using UserManagment.DTO.Command;
+using UserManagment.Handler.Abstractions;
 
 namespace UserManagment.Handler.CommandHandlers
 {
-    public class UserUpdateHandler
+    public class UserUpdateHandler : ICommandHandler<UserUpdateCommand>
     {
-        public UserUpdateHandler() { }
 
-        public void UpdateUser(UserUpdateRequest request)
+
+        public async Task HandleAsync(UserUpdateCommand request)
         {
             
         }
