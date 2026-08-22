@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using UserManagment.DTO.UserRequestDTO;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace UserManagment.API.Controllers
 {

@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using UserManagment.DTO.UserRequestDTO;
-using UserManagment.Handler.CommandHandlers;
+﻿using Microsoft.AspNetCore.Mvc;
+using UserManagment.DTO.Command;
+using UserManagment.Handler.Abstractions;
 
 namespace UserManagment.API.Controllers
 {
@@ -9,15 +8,15 @@ namespace UserManagment.API.Controllers
     [ApiController]
     public class UserRegisterController : ControllerBase
     {
-        private readonly UserRegistrationHandler _userRegistrationHandler;
-        public UserRegisterController(UserRegistrationHandler userRegistrationHandler)
+        private readonly ICommandHandler<UserRegisterCommand> _userRegistrationHandler;
+        public UserRegisterController(ICommandHandler<UserRegisterCommand>  userRegistrationHandler)
         {
             _userRegistrationHandler = userRegistrationHandler;
         }
         [HttpPost]
-        public async Task<IActionResult> CreateUser([FromBody] UserRegisterRequest request)
+        public async Task<IActionResult> CreateUser([FromBody] UserRegisterCommand request)
         {
-            return Ok(_userRegistrationHandler.RegisterUserAsync(request));
+            return Ok(_userRegistrationHandler.HandleAsync(request));
             //return Ok(new { Message = "User created successfully" });
         }
     }

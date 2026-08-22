@@ -1,9 +1,10 @@
 ﻿using BCrypt.Net;
+using UserManagment.AggregateRoot.PasswordHasher.Interfaces;
 
 
 namespace UserManagment.AggregateRoot.PasswordHasher
 {
-    public class PasswordHash
+    public class PasswordHash : IPasswordHasher
     {
         public string HashPassword(string password)
         {

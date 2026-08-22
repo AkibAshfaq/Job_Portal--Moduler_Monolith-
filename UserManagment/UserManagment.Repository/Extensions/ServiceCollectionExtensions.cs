@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using UserManagment.Repository.Context;
 using UserManagment.Repository.Repositories;
-
+using UserManagment.Repository.Repositories.Interfaces;
 
 
 namespace UserManagment.Repository.Extensions
@@ -14,10 +14,7 @@ namespace UserManagment.Repository.Extensions
         {
             services.AddDbContext<PortalDbContext>(Options => 
             Options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
-            services.AddScoped<UserUpdateRepository>();
-            services.AddScoped<GetUserByMailRepository>();
-            services.AddScoped<UserRegisterRepository>();
-            services.AddScoped<GetUsersRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
             return services;
         }
     }

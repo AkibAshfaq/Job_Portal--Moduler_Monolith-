@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using FluentValidation;
+using UserManagment.DTO.Command;
 
 namespace UserManagment.Handler.Validations
 {
-    internal class RegistrationValidator
+    public class RegistrationValidator : AbstractValidator<UserRegisterCommand>
     {
+        
     }
 }
