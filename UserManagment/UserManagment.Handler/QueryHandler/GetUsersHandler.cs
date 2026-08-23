@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using UserManagment.AggregateRoot.Entities;
-using UserManagment.DTO.DTO;
+﻿using UserManagment.AggregateRoot.Entities;
 using UserManagment.DTO.Query;
 using UserManagment.Handler.Abstractions;
-using UserManagment.Repository.Repositories;
 using UserManagment.Repository.Repositories.Interfaces;
 
 namespace UserManagment.Handler.QueryHandler
