@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using UserManagment.DTO.Command.Abstractions;
 using UserManagment.DTO.Enums;
 
-namespace UserManagment.DTO.UserRequestDTO
+namespace UserManagment.DTO.Command
 {
-    public class UserRegisterRequest
+    public class UserRegisterCommand : ICommand
     {
         public string? FullName { get; set; }
         public string? Email { get; set; }

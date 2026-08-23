@@ -1,20 +1,22 @@
-﻿using UserManagment.AggregateRoot.Entities;
-using UserManagment.AggregateRoot.PasswordHasher;
+﻿using UserManagment.AggregateRoot.Aggregates.Interfaces;
+using UserManagment.AggregateRoot.Entities;
+using UserManagment.DTO.Command;
 using UserManagment.DTO.DTO;
-using UserManagment.DTO.UserRequestDTO;
+using UserManagment.DTO.Responses;
+using UserManagment.AggregateRoot.PasswordHasher.Interfaces;
 
 namespace UserManagment.AggregateRoot.Aggregates
 {
-    public class UserRegisterAggregate
+    public class UserRegisterAggregate : IUserRegisterAggregate
     {
-        private readonly PasswordHash _passwordHasher;
+        private readonly IPasswordHasher _passwordHasher;
 
-        public UserRegisterAggregate(PasswordHash passwordHasher)
+        public UserRegisterAggregate(IPasswordHasher passwordHasher)
         {
             _passwordHasher = passwordHasher;
         }
 
-        public User ToEntity(UserRegisterRequest request)
+        public User ToEntity(UserRegisterCommand request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
             if (!request.UserType.HasValue) throw new ArgumentException("UserType is required", nameof(request.UserType));

@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using UserManagment.Handler.QueryHandler;
+﻿using Microsoft.AspNetCore.Mvc;
+using UserManagment.AggregateRoot.Entities;
+using UserManagment.DTO.DTO;
+using UserManagment.DTO.Query;
+using UserManagment.Handler.Abstractions;
 
 namespace UserManagment.API.Controllers
 {
@@ -8,17 +10,17 @@ namespace UserManagment.API.Controllers
     [ApiController]
     public class GetUsersController : ControllerBase
     {
-        private readonly GetUsersHandler _getUsersHandler;
-        public GetUsersController(GetUsersHandler getUsersHandler)
+        private readonly IQueryHandler<GetUsersQuery, IEnumerable<User>> getUsersHandler;
+
+        public GetUsersController(IQueryHandler<GetUsersQuery, IEnumerable<User>> getUsersHandler)
         {
-            _getUsersHandler = getUsersHandler;
+            this.getUsersHandler = getUsersHandler;
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetUsers()
+        public async Task<ActionResult<IEnumerable<UserDTO>>> GetUsers()
         {
-            var users = await _getUsersHandler.Handler();
-            return Ok(users);
+            return Ok(await getUsersHandler.HandleAsync(null));
         }
     }
 }

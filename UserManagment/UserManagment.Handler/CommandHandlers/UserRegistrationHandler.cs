@@ -1,39 +1,38 @@
 ﻿
-using UserManagment.AggregateRoot;
 using UserManagment.AggregateRoot.Aggregates;
-using UserManagment.DTO.UserRequestDTO;
+using UserManagment.AggregateRoot.Aggregates.Interfaces;
+using UserManagment.DTO.Command;
+using UserManagment.DTO.Responses;
+using UserManagment.Handler.Abstractions;
 using UserManagment.Repository.Repositories;
+using UserManagment.Repository.Repositories.Interfaces;
 
 namespace UserManagment.Handler.CommandHandlers
 {
-    public class UserRegistrationHandler
+    public class UserRegistrationHandler : ICommandHandler<UserRegisterCommand>
     {
-        private readonly GetUserByMailRepository _getUserByMailRepository;
-        private readonly UserRegisterRepository _userRegisterRepository;
-        private readonly UserRegisterAggregate _UserRegisterAggregator;
+        private readonly IUserRepository _userRepo;
+        private readonly IUserRegisterAggregate _userAgg;
 
-        public UserRegistrationHandler(GetUserByMailRepository getUserByMailRepository, UserRegisterRepository userRegisterRepository, UserRegisterAggregate userRegisterAggregator)
+        public UserRegistrationHandler(IUserRepository userRepo, IUserRegisterAggregate userAgg)
         {
-            _getUserByMailRepository = getUserByMailRepository;
-            _userRegisterRepository = userRegisterRepository;
-            _UserRegisterAggregator = userRegisterAggregator;
+            _userRepo = userRepo;
+            _userAgg = userAgg;
         }
 
-        public UserRegisterResponse RegisterUserAsync(UserRegisterRequest request)
+        public async Task HandleAsync(UserRegisterCommand request)
         {
             try
             {
-                var user = _getUserByMailRepository.GetUserByEmailAsync(request.Email);
-                if (user) throw new InvalidOperationException("User with this email already exists.");
+                var user = _userRepo.GetUserByEmail(request.Email);
+                if (user != null) throw new InvalidOperationException("User with this email already exists.");
 
-                var newUser = _UserRegisterAggregator.ToEntity(request);
+                var newUser = _userAgg.ToEntity(request);
 
-                var createdUser = _userRegisterRepository.RegisterUserSync(newUser);
+                await _userRepo.AddAsync(newUser);
                 
-                if(createdUser) _userRegisterRepository.SaveChangeAsync();
-                else throw new InvalidOperationException("Failed to save the new user to the database.");
+                await _userRepo.SaveChangeAsync();
 
-                return _UserRegisterAggregator.ToResponse(newUser);
             }
             catch (Exception ex)
             {

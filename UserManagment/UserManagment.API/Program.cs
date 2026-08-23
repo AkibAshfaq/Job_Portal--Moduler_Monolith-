@@ -1,4 +1,5 @@
 using UserManagment.Handler.Extentions;
+using UserManagment.DTO.Extentions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,7 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddDTOService();
 builder.Services.AddHandlerLayer(builder.Configuration);
 
 var app = builder.Build();
