@@ -1,5 +1,6 @@
 ﻿
 using UserManagment.AggregateRoot.Aggregates;
+using UserManagment.AggregateRoot.Aggregates.Interfaces;
 using UserManagment.DTO.Command;
 using UserManagment.DTO.Responses;
 using UserManagment.Handler.Abstractions;
@@ -11,20 +12,20 @@ namespace UserManagment.Handler.CommandHandlers
     public class UserRegistrationHandler : ICommandHandler<UserRegisterCommand>
     {
         private readonly IUserRepository _userRepo;
-        private readonly UserRegisterAggregate _userAgg;
+        private readonly IUserRegisterAggregate _userAgg;
 
-        public UserRegistrationHandler(IUserRepository userRepo, UserRegisterAggregate UserAgg)
+        public UserRegistrationHandler(IUserRepository userRepo, IUserRegisterAggregate userAgg)
         {
             _userRepo = userRepo;
-            _userAgg = UserAgg;
+            _userAgg = userAgg;
         }
 
         public async Task HandleAsync(UserRegisterCommand request)
         {
             try
             {
-                var user = await _userRepo.GetUserByEmailAsync(request.Email);
-                if (user) throw new InvalidOperationException("User with this email already exists.");
+                var user = _userRepo.GetUserByEmail(request.Email);
+                if (user != null) throw new InvalidOperationException("User with this email already exists.");
 
                 var newUser = _userAgg.ToEntity(request);
 

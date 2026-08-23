@@ -1,6 +1,5 @@
 ﻿using UserManagment.AggregateRoot.Aggregates.Interfaces;
 using UserManagment.AggregateRoot.Entities;
-using UserManagment.AggregateRoot.PasswordHasher;
 using UserManagment.DTO.Command;
 using UserManagment.DTO.DTO;
 using UserManagment.DTO.Responses;

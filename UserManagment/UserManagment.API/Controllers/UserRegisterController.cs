@@ -16,8 +16,9 @@ namespace UserManagment.API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateUser([FromBody] UserRegisterCommand request)
         {
-            return Ok(_userRegistrationHandler.HandleAsync(request));
-            //return Ok(new { Message = "User created successfully" });
+            if (request == null) return BadRequest();
+            await _userRegistrationHandler.HandleAsync(request);
+            return Ok();
         }
     }
 }

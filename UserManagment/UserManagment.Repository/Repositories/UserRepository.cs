@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using UserManagment.AggregateRoot.Entities;
@@ -11,16 +12,15 @@ namespace UserManagment.Repository.Repositories
     {
         public UserRepository(PortalDbContext context) : base(context){}
 
-        public async Task<bool> GetUserByEmailAsync(string email)
+        public User? GetUserByEmail(string email)
         {
             try
             {
-                var user = await GetByIdWithoutTrackingAsync(u => u.Email == email);
-                return user != null;
+                return _context.Users.FirstOrDefault(u => u.Email == email);
             }
             catch (Exception)
             {
-                return false;
+                return null;
             }
         }
 

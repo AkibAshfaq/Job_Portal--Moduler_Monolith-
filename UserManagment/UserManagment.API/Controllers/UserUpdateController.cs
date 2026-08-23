@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using UserManagment.DTO.Command;
+using UserManagment.Handler.Abstractions;
 
 namespace UserManagment.API.Controllers
 {
@@ -7,10 +8,17 @@ namespace UserManagment.API.Controllers
     [ApiController]
     public class UserUpdateController : ControllerBase
     {
-        [HttpPost]
+        private readonly ICommandHandler<UserUpdateCommand> _handler;
+        public UserUpdateController(ICommandHandler<UserUpdateCommand> handler)
+        {
+            _handler = handler;
+        }
+        [HttpPut]
         public async Task<IActionResult> UpdateUser([FromBody] UserUpdateCommand request)
         {
-            return Ok(new { Message = "User updated successfully" });
+            if (request == null) return BadRequest("Invalid request data");
+            await _handler.HandleAsync(request);
+            return Ok();
         }
     }
 }

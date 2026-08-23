@@ -7,6 +7,6 @@ namespace UserManagment.Repository.Repositories.Interfaces
 {
     public interface IUserRepository : IGenericRepository<User>
     {
-        Task<bool> GetUserByEmailAsync(string email);
+        User? GetUserByEmail(string email);
     }
 }
