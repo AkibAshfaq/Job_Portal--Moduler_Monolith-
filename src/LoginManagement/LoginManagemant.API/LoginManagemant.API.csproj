@@ -10,4 +10,10 @@
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.11" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\JobPortal.Shared\JobPortal.Shared.csproj" />
+    <ProjectReference Include="..\LoginManagement.DTO\LoginManagement.DTO.csproj" />
+    <ProjectReference Include="..\LoginManagement.Handler\LoginManagement.Handler.csproj" />
+  </ItemGroup>
+
 </Project>

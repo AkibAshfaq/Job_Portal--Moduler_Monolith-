@@ -6,4 +6,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\LoginManagement.AggregateRoot\LoginManagement.AggregateRoot.csproj" />
+    <ProjectReference Include="..\LoginManagement.DTO\LoginManagement.DTO.csproj" />
+    <ProjectReference Include="..\LoginManagement.Repository\LoginManagement.Repository.csproj" />
+  </ItemGroup>
+
 </Project>
