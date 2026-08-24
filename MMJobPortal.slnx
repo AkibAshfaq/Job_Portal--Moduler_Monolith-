@@ -1,0 +1,18 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/LoginManagement/">
+    <Project Path="src/LoginManagement/LoginManagemant.API/LoginManagemant.API.csproj" Id="91847f90-7bac-46b6-aab9-865170188341" />
+    <Project Path="src/LoginManagement/LoginManagement.AggregateRoot/LoginManagement.AggregateRoot.csproj" Id="de16d84d-e2f0-4d00-aefe-86f192e5f85f" />
+    <Project Path="src/LoginManagement/LoginManagement.DTO/LoginManagement.DTO.csproj" Id="602f3f92-94e6-4730-bcf4-ce95d5a27aaa" />
+    <Project Path="src/LoginManagement/LoginManagement.Handler/LoginManagement.Handler.csproj" Id="bdcafeac-783d-4560-b8d1-2bdddb17fe0c" />
+    <Project Path="src/LoginManagement/LoginManagement.Repository/LoginManagement.Repository.csproj" Id="ca00d332-5987-4de1-af08-c5ad0b8cb835" />
+  </Folder>
+  <Folder Name="/src/UserManagement/">
+    <Project Path="src/UserManagment/UserManagment.AggregateRoot/UserManagement.AggregateRoot.csproj" />
+    <Project Path="src/UserManagment/UserManagment.API/UserManagement.API.csproj" />
+    <Project Path="src/UserManagment/UserManagment.DTO/UserManagement.DTO.csproj" />
+    <Project Path="src/UserManagment/UserManagment.Handler/UserManagement.Handler.csproj" />
+    <Project Path="src/UserManagment/UserManagment.Repository/UserManagement.Repository.csproj" />
+  </Folder>
+  <Project Path="JobPortal.Shared/JobPortal.Shared.csproj" Id="464547a0-bbc2-44c6-a555-07e3b3f9c914" />
+</Solution>

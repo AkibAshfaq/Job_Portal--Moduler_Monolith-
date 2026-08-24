@@ -1,7 +1,0 @@
-<Solution>
-  <Project Path="UserManagment.AggregateRoot/UserManagment.AggregateRoot.csproj" />
-  <Project Path="UserManagment.API/UserManagment.API.csproj" />
-  <Project Path="UserManagment.DTO/UserManagment.DTO.csproj" />
-  <Project Path="UserManagment.Handler/UserManagment.Handler.csproj" />
-  <Project Path="UserManagment.Repository/UserManagment.Repository.csproj" />
-</Solution>
