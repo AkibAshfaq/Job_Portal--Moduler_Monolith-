@@ -1,6 +1,7 @@
 using UserManagement.Handler.Extentions;
 using UserManagement.DTO.Extentions;
 using FluentValidation.AspNetCore;
+DotNetEnv.Env.TraversePath().Load();
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddFluentValidationAutoValidation();
