@@ -8,12 +8,10 @@ namespace UserManagement.Handler.QueryHandler
     public class GetUsersHandler: IQueryHandler<GetUsersQuery, IEnumerable<UsersAggregateRoot>>
     {
         private readonly IUserRepository _userRepo;
-
         public GetUsersHandler(IUserRepository userRepo)
         {
             _userRepo = userRepo;
         }
-
         public async Task<IEnumerable<UsersAggregateRoot>> HandleAsync(GetUsersQuery query)
         {
             try
@@ -25,8 +23,6 @@ namespace UserManagement.Handler.QueryHandler
             {
                 throw new InvalidDataException("An error occurred while retrieving users.");
             }
-
         }
-
     }
 }
