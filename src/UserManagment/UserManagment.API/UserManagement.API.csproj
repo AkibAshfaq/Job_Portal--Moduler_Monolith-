@@ -19,7 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\JobPortal.Shared\JobPortal.Shared.csproj" />
     <ProjectReference Include="..\UserManagment.DTO\UserManagement.DTO.csproj" />
     <ProjectReference Include="..\UserManagment.Handler\UserManagement.Handler.csproj" />
   </ItemGroup>
