@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using JobPortal.Shared.Interfaces.QueryHandler;
 using Microsoft.AspNetCore.Mvc;
+using SubscriptionPlan.DTO.Query;
+using SubscriptionPlan.DTO.Response;
 
 namespace SubscriptionPlan.API.Controllers
 {
@@ -7,11 +9,17 @@ namespace SubscriptionPlan.API.Controllers
     [ApiController]
     public class ViewSubscriptionPlanController : ControllerBase
     {
-        public ViewSubscriptionPlanController() { }
-
-        public IActionResult ViewSubscriptionPlan()
+        private readonly IQueryHandler<ViewSubscriptionQuery, IEnumerable<ViewSubscriptionResponse>> _queryHandler;    
+        public ViewSubscriptionPlanController( 
+            IQueryHandler<ViewSubscriptionQuery, IEnumerable<ViewSubscriptionResponse>> queryHandler)
         {
-            return Ok("Subscription plan details retrieved successfully.");
+            _queryHandler = queryHandler;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ViewSubscriptionPlan()
+        {
+            return Ok( await _queryHandler.HandleAsync(null));
         }
     }
 }

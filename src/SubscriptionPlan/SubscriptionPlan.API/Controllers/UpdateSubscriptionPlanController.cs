@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using JobPortal.Shared.Interfaces.CommandHandler;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SubscriptionPlan.DTO.Command;
 
 namespace SubscriptionPlan.API.Controllers
 {
@@ -7,10 +9,16 @@ namespace SubscriptionPlan.API.Controllers
     [ApiController]
     public class UpdateSubscriptionPlanController : ControllerBase
     {
-        public UpdateSubscriptionPlanController() { }
-
-        public IActionResult UpdateSubscriptionPlan()
+        private readonly ICommandHandler<UpdateSubscriptionCommand> _commandHandler;
+        public UpdateSubscriptionPlanController(ICommandHandler<UpdateSubscriptionCommand> commandHandler)
         {
+            _commandHandler = commandHandler;
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateSubscriptionPlan(UpdateSubscriptionCommand command)
+        {
+            await _commandHandler.HandleAsync(command);
             return Ok("Subscription plan updated successfully.");
         }
 
