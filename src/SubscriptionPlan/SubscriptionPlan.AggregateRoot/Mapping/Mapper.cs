@@ -1,6 +1,7 @@
 ﻿using SubscriptionPlan.AggregateRoot.Mapping.Interface;
 using SubscriptionPlan.DTO.Command;
 using SubscriptionPlan.DTO.Query;
+using SubscriptionPlan.DTO.Response;
 
 namespace SubscriptionPlan.AggregateRoot.Mapping
 {
@@ -63,6 +64,25 @@ namespace SubscriptionPlan.AggregateRoot.Mapping
                 Name = request.Name,
                 Slug = request.Slug
             };
+        }
+
+        public IEnumerable<ViewSubscriptionResponse> EntityToResponse(IEnumerable<SubscriptionPlanAggregateRoot> entities)
+        {
+            return entities.Select(entity => new ViewSubscriptionResponse
+            {
+                Name = entity.Name,
+                Slug = entity.Slug,
+                Description = entity.Description,
+                Price = entity.Price,
+                Currency = entity.Currency,
+                DurationDays = entity.DurationDays,
+                JobPostLimit = entity.JobPostLimit,
+                FeaturedJobLimit = entity.FeaturedJobLimit,
+                ResumeViewLimit = entity.ResumeViewLimit,
+                CanSearchResumes = entity.CanSearchResumes,
+                HasPrioritySupport = entity.HasPrioritySupport,
+                IsActive = entity.IsActive
+            }).ToList();
         }
     }
 }

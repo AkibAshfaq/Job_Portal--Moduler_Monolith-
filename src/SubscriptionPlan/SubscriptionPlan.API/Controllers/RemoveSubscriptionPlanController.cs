@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using JobPortal.Shared.Interfaces.CommandHandler;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SubscriptionPlan.DTO.Command;
 
 namespace SubscriptionPlan.API.Controllers
 {
@@ -7,10 +9,16 @@ namespace SubscriptionPlan.API.Controllers
     [ApiController]
     public class RemoveSubscriptionPlanController : ControllerBase
     {
-        public RemoveSubscriptionPlanController() { }
-
-        public IActionResult RemoveSubscriptionPlan()
+        private readonly ICommandHandler<RemoveSubscriptionCommand> _commandHandler;
+        public RemoveSubscriptionPlanController(ICommandHandler<RemoveSubscriptionCommand> commandHandler)
         {
+            _commandHandler = commandHandler;
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> RemoveSubscriptionPlan(RemoveSubscriptionCommand command)
+        {
+            await _commandHandler.HandleAsync(command);
             return Ok("Subscription plan removed successfully.");
         }
     }

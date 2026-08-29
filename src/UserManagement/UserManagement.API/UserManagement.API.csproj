@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="DotNetEnv" Version="3.2.0" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.1" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.11" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.11">
       <PrivateAssets>all</PrivateAssets>
@@ -17,8 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SubscriptionPlan.DTO\SubscriptionPlan.DTO.csproj" />
-    <ProjectReference Include="..\SubscriptionPlan.Handler\SubscriptionPlan.Handler.csproj" />
+    <ProjectReference Include="..\UserManagement.DTO\UserManagement.DTO.csproj" />
+    <ProjectReference Include="..\UserManagement.Handler\UserManagement.Handler.csproj" />
   </ItemGroup>
 
 </Project>

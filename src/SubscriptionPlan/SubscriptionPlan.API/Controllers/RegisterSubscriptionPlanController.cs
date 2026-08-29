@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using JobPortal.Shared.Interfaces.CommandHandler;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SubscriptionPlan.DTO.Command;
+using System.Windows.Input;
 
 namespace SubscriptionPlan.API.Controllers
 {
@@ -7,10 +10,16 @@ namespace SubscriptionPlan.API.Controllers
     [ApiController]
     public class RegisterSubscriptionPlanController : ControllerBase
     {
-        public RegisterSubscriptionPlanController() { }
-
-        public IActionResult RegisterSubscriptionPlan()
+        private readonly ICommandHandler<RegisterSubscriptionCommand> _commandHandler;
+        public RegisterSubscriptionPlanController(ICommandHandler<RegisterSubscriptionCommand> commandHandler)
         {
+            _commandHandler = commandHandler;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RegisterSubscriptionPlan(RegisterSubscriptionCommand command)
+        {
+            await _commandHandler.HandleAsync(command);
             return Ok("Subscription plan registered successfully.");
         }
     }

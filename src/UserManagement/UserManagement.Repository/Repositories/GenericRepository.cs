@@ -1,24 +1,26 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SubscriptionPlan.Repository.Context;
-using SubscriptionPlan.Repository.Repositories.Interfaces;
+using System;
+using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Text;
+using UserManagement.Repository.Context;
+using UserManagement.Repository.Repositories.Interfaces;
 
-namespace SubscriptionPlan.Repository.Repositories
+namespace UserManagement.Repository.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        public readonly PortalDbSubscriptionContext _context;
+        public readonly PortalDbUserContext _context;
         public readonly DbSet<T> _dbset;
 
-        public GenericRepository(PortalDbSubscriptionContext context)
+        public GenericRepository(PortalDbUserContext context)
         {
             _context = context;
             _dbset = _context.Set<T>();
         }
-        public async Task<T?> AddAsync(T Entity)
+        public async Task AddAsync(T Entity)
         {
-            var entity = await _dbset.AddAsync(Entity);
-            return entity.Entity;
+            await _dbset.AddAsync(Entity);
         }
 
         public async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate)
@@ -51,9 +53,9 @@ namespace SubscriptionPlan.Repository.Repositories
             return await _dbset.AsNoTracking().FirstOrDefaultAsync(predicate);
         }
 
-        public async Task<int> SaveChangeAsync()
+        public async Task SaveChangeAsync()
         {
-            return await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
         }
     }
 }

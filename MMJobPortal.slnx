@@ -3,17 +3,17 @@
     <Project Path="src/JobPortal.Shared/JobPortal.Shared.csproj" />
   </Folder>
   <Folder Name="/src/SubscriptionPlan/">
-    <Project Path="src/SubscriptionPlan/SubscriptionPlan.AggregateRoot/SubscriptionPlan.AggregateRoot.csproj" Id="66f63417-c6ff-4363-aee4-840ec4e2b033" />
-    <Project Path="src/SubscriptionPlan/SubscriptionPlan.API/SubscriptionPlan.API.csproj" Id="3e719829-664f-432a-a32d-d63b180c6093" />
-    <Project Path="src/SubscriptionPlan/SubscriptionPlan.DTO/SubscriptionPlan.DTO.csproj" Id="b4b46e6d-b71e-4e92-8959-6af2cc9d009e" />
-    <Project Path="src/SubscriptionPlan/SubscriptionPlan.Handler/SubscriptionPlan.Handler.csproj" Id="1476c390-f1a7-4a07-89d0-5bc6c354051f" />
-    <Project Path="src/SubscriptionPlan/SubscriptionPlan.Repository/SubscriptionPlan.Repository.csproj" Id="b3953a7b-b6dd-40aa-af0e-819b557bb427" />
+    <Project Path="src/SubscriptionPlan/SubscriptionPlan.AggregateRoot/SubscriptionPlan.AggregateRoot.csproj" />
+    <Project Path="src/SubscriptionPlan/SubscriptionPlan.API/SubscriptionPlan.API.csproj" />
+    <Project Path="src/SubscriptionPlan/SubscriptionPlan.DTO/SubscriptionPlan.DTO.csproj" />
+    <Project Path="src/SubscriptionPlan/SubscriptionPlan.Handler/SubscriptionPlan.Handler.csproj" />
+    <Project Path="src/SubscriptionPlan/SubscriptionPlan.Repository/SubscriptionPlan.Repository.csproj" />
   </Folder>
   <Folder Name="/src/UserManagement/">
-    <Project Path="src/UserManagment/UserManagment.AggregateRoot/UserManagement.AggregateRoot.csproj" />
-    <Project Path="src/UserManagment/UserManagment.API/UserManagement.API.csproj" />
-    <Project Path="src/UserManagment/UserManagment.DTO/UserManagement.DTO.csproj" />
-    <Project Path="src/UserManagment/UserManagment.Handler/UserManagement.Handler.csproj" />
-    <Project Path="src/UserManagment/UserManagment.Repository/UserManagement.Repository.csproj" />
+    <Project Path="src/UserManagement/UserManagement.AggregateRoot/UserManagement.AggregateRoot.csproj" />
+    <Project Path="src/UserManagement/UserManagement.API/UserManagement.API.csproj" />
+    <Project Path="src/UserManagement/UserManagement.DTO/UserManagement.DTO.csproj" />
+    <Project Path="src/UserManagement/UserManagement.Handler/UserManagement.Handler.csproj" />
+    <Project Path="src/UserManagement/UserManagement.Repository/UserManagement.Repository.csproj" />
   </Folder>
 </Solution>

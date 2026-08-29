@@ -21,18 +21,19 @@ namespace SubscriptionPlan.Handler.CommandHandler
             _subRepo = subscriptionPlanRepository;
             _SubRoot = subscriptionPlanAggregateRoot;
         }
-        public Task HandleAsync(RegisterSubscriptionCommand command)
+        public async Task HandleAsync(RegisterSubscriptionCommand command)
         {
-            var plan = _subRepo.GetSubscriptionPlanBySlug(command.Slug) 
-                ?? throw new NotFoundException("Subscription plan Already exists");
+            var plan = _subRepo.GetSubscriptionPlanBySlug(command.Slug); 
+            if (plan != null) throw new NotFoundException("Subscription plan Already exists");
 
             var newplan = _mapper.RegisterRequestToEntity(command) 
                 ?? throw new NotFoundException("Subscription Data Invalid");
 
-            _subRepo.AddAsync(newplan);
-            _subRepo.SaveChangeAsync();
-
-            return Task.CompletedTask;
+            var entity = await _subRepo.AddAsync(newplan);
+            var saveResult = await _subRepo.SaveChangeAsync();
+            if (saveResult == 0){
+                throw new NotSavedException("Failed to save changes");
+            }
         }
     }
 }
